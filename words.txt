@@ -1,0 +1,3 @@
+#english;transcription;russian
+test;test;проверка, испытание; тест
+make;meɪk;делать, конструировать, создавать, изготавливать
