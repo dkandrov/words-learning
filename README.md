@@ -11,3 +11,6 @@ Shows simple notifications for the study of English words
  - `notify-send` - showing notifications
  - `shuf` - random generator
  - `cat`, `wc`, `head`, `tail`, `cut` and `echo`  :relaxed:
+
+## Icons
+Icons are taken from the site: http://www.icondrawer.com/free.php

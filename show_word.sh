@@ -1,6 +1,14 @@
 #!/bin/bash
 
-WORDS_FILE=words.txt
+dirname=$(dirname "`readlink -f "$0"`")
+
+tmp="${dirname#?}"
+
+if [ "${dirname%$tmp}" != "/" ]; then
+    dirname=$PWD/$dirname
+fi
+
+WORDS_FILE=$dirname/words.txt
 
 NUM_WORDS=`cat $WORDS_FILE|wc -l`
 
@@ -12,6 +20,10 @@ EN_WORD=`echo $WORD_TO_SHOW | cut -d ";" -f1`
 TRANSCRIPTION=`echo $WORD_TO_SHOW | cut -d ";" -f2`
 RU_WORD=`echo $WORD_TO_SHOW | cut -d ";" -f3`
 
-echo $EN_WORD [$TRANSCRIPTION] - $RU_WORD
+#echo $EN_WORD [$TRANSCRIPTION] - $RU_WORD
+
 LINK="<a href=\"https://www.lingvolive.com/ru-ru/translate/en-ru/$EN_WORD\">больше...</a>"
-notify-send "Words learning" "<b>$EN_WORD</b> [<i>$TRANSCRIPTION</i>] - $RU_WORD, $LINK"
+
+notify-send -i $dirname/en.png -t 7000 "Words learning" "<b>$EN_WORD</b> [<i>$TRANSCRIPTION</i>]"
+sleep 3
+notify-send -i $dirname/ru.png -t 4000 "Words learning" "$RU_WORD, $LINK"
